@@ -1,0 +1,18 @@
+{
+    "name": "com.cfrbernard.unitylitel10n",
+    "version": "0.1.0",
+    "displayName": "Unity Lite L10n",
+    "description": "A minimal localization tool for Unity - made for small projects.",
+    "unity": "6000.3",
+    "license": "MIT",
+    "keywords": [
+        "L10n",
+        "tool",
+        "localization"
+    ],
+    "author": {
+        "name": "cfrBernard",
+        "email": "cfr.bernard@yahoo.com",
+        "url": "https://github.com/cfrBernard/UnityLiteL10n"
+    }
+}

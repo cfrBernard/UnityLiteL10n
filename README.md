@@ -1,9 +1,9 @@
 # UnityLiteL10n
-A minimal **JSON-Based** localization tool for Unity – Designed for small projects. **[v0.1.0]** This tool currently supports static text only. Variables, plurals, and advanced formatting are not implemented yet.
+A minimal **JSON-Based** localization tool for Unity – Designed for small projects. **[v0.2.0]** This tool currently supports static text only. Variables, plurals, and advanced formatting are not implemented yet.
 
 > This project is made/test under Unity 6.3 (6000.3.1f1)
 
-![Version](https://img.shields.io/badge/version-v0.1.0-blue)
+![Version](https://img.shields.io/badge/version-v0.2.0-blue)
 ![License](https://img.shields.io/github/license/cfrBernard/UnityLiteL10n)
 
 ## Features:
@@ -41,6 +41,11 @@ Resources/Localization/
 - `DefaultLanguage` (e.g. `EN`)
 - `CurrentLanguage` (e.g. `EN`)
 
+5. **Optional**: Configure logging and strict mode
+- `LogLevel` (None, ErrorsOnly, Warnings, Verbose)
+- `strictMode` (enable to throw errors on invalid JSON / missing languages)
+- `missingKeyFormat` (default: "[{0}]") for how missing keys are displayed
+
 ---
 
 ## JSON Format
@@ -56,7 +61,8 @@ Each language file is a simple JSON file:
 }
 ```
 
-> The filename (e.g. EN.json, FR.json) is used as the language code.
+> - The filename (e.g. EN.json, FR.json) is used as the language code.  
+> - JSON entries must now be valid and non-null; empty files will trigger warnings or errors in strictMode
 
 ---
 
@@ -79,6 +85,18 @@ LocalizationManager.Instance.SetLanguage("FR");
 ```
 
 > All subscribed LocalizedText components will update automatically.
+
+---
+
+### Reload Localization Data at Runtime
+
+```
+LocalizationManager.Instance.Reload();
+```
+
+- Clears cached missing keys
+- Reloads all JSON files from `Resources/Localization/`
+- Triggers update events for all `LocalizedText` components
 
 ---
 
@@ -127,8 +145,9 @@ UnityLiteL10n/
 
 ## Notes:
 
-- This tool currently supports static text only
-- Variables, plurals, and advanced formatting are not implemented yet
+- **New in v0.2.0**: LogLevel, strictMode, Reload(), missingKeyFormat, and improved JSON validation.
+- This tool currently supports static text only.
+- Variables, plurals, and advanced formatting are not implemented yet.
 - For more information about the version, please refer to the [changelog](Docs/CHANGELOG.md) section.
 - This project is licensed under the MIT License. See the [LICENSE](LICENSE.md) file for details.
 - More details in the [FAQ](Docs/FAQ.md).

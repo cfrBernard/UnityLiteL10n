@@ -1,0 +1,6 @@
+{
+    "entries": [
+        { "key": "menu.play", "value": "Jouer" },
+        { "key": "menu.quit", "value": "Quitter" }
+    ]
+}

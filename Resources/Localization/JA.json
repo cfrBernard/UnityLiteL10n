@@ -1,0 +1,8 @@
+{
+    "entries": [
+        { "key": "menu.test", "value": "JA" },
+        { "key": "menu.play", "value": "プレイ" },
+        { "key": "menu.settings", "value": "設定" },
+        { "key": "menu.quit", "value": "終了" }
+    ]
+}

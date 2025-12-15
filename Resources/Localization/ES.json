@@ -1,6 +1,8 @@
 {
     "entries": [
-        { "key": "menu.play", "value": "Jugar" },
-        { "key": "menu.quit", "value": "Salir" }
+        { "key": "menu.test", "value": "ES" },
+        { "key": "menu.play", "value": "JUGAR" },
+        { "key": "menu.settings", "value": "OPCIONES" },
+        { "key": "menu.quit", "value": "SALIR" }
     ]
 }

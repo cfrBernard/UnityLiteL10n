@@ -1,9 +1,9 @@
 # UnityLiteL10n
-A minimal **JSON-Based** localization tool for Unity – Designed for small projects. **[v0.2.0]** This tool currently supports static text only. Variables, plurals, and advanced formatting are not implemented yet.
+A minimal **JSON-Based** localization tool for Unity – Designed for small projects. **[v0.3.0]** This tool currently supports static text only. Variables, plurals, and advanced formatting are not implemented yet.
 
 > This project is made/test under Unity 6.3 (6000.3.1f1)
 
-![Version](https://img.shields.io/badge/version-v0.2.0-blue)
+![Version](https://img.shields.io/badge/version-v0.3.0-blue)
 ![License](https://img.shields.io/github/license/cfrBernard/UnityLiteL10n)
 
 ## Features:
@@ -16,7 +16,7 @@ A minimal **JSON-Based** localization tool for Unity – Designed for small proj
 ---
 
 <p align="center">
-  <img src="Docs/Gifs/Unity_4g4nxTcib8.gif" alt="DemoGIF v0.1.0" />
+  <img src="Docs/Gifs/Unity_5194vnofdK.gif" alt="DemoGIF v0.3.0" />
 </p>
 
 ---
@@ -54,11 +54,14 @@ Each language file is a simple JSON file:
 
 ```
 {
-  "entries": [
-    { "key": "menu.play", "value": "Play" },
-    { "key": "menu.quit", "value": "Quit" }
-  ]
+    "entries": [
+        { "key": "menu.test", "value": "EN" },
+        { "key": "menu.play", "value": "PLAY" },
+        { "key": "menu.settings", "value": "SETTINGS" },
+        { "key": "menu.quit", "value": "QUIT" }
+    ]
 }
+
 ```
 
 > - The filename (e.g. EN.json, FR.json) is used as the language code.  
@@ -116,36 +119,8 @@ It showcases:
 
 ---
 
-## Folder Structure
-
-```
-UnityLiteL10n/
-├── Demo/
-│   ├── LocalizationDemo.unity
-│   ├── LocalizationDemo.unity.meta
-│   └── Scripts/
-│       └── LanguageSwitcher.cs
-├── Docs/
-│   ├── CHANGELOG.md
-│   └── FAQ.md
-├── Editor/
-├── LICENSE.md
-├── README.md
-├── Resources/
-│   └── Localization/
-│       ├── EN.json
-│       ├── ES.json
-│       └── FR.json
-└── Scripts/
-    ├── LocalizationManager.cs
-    └── LocalizedText.cs
-```
-
----
-
 ## Notes:
 
-- **New in v0.2.0**: LogLevel, strictMode, Reload(), missingKeyFormat, and improved JSON validation.
 - This tool currently supports static text only.
 - Variables, plurals, and advanced formatting are not implemented yet.
 - For more information about the version, please refer to the [changelog](Docs/CHANGELOG.md) section.

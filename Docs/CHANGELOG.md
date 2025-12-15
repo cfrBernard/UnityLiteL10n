@@ -1,3 +1,19 @@
+## [v0.3.0] – 2025/12/15
+
+### Added
+- Added Japanese (JA) and Korean (KO) localization files for demo purposes
+- Extended demo to showcase multi-language support beyond Latin alphabets
+
+### Improved
+- Updated demo UI with a cleaner and minimal layout
+- Improved overall demo readability and presentation
+
+### Notes
+- No changes to the core localization API
+- No behavior changes in loading, fallback, or logging
+
+---
+
 ## [v0.2.0] – 2025/12/14
 
 ### Added

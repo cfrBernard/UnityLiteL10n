@@ -1,6 +1,8 @@
 {
     "entries": [
-        { "key": "menu.play", "value": "Play" },
-        { "key": "menu.quit", "value": "Quit" }
+        { "key": "menu.test", "value": "EN" },
+        { "key": "menu.play", "value": "PLAY" },
+        { "key": "menu.settings", "value": "SETTINGS" },
+        { "key": "menu.quit", "value": "QUIT" }
     ]
 }

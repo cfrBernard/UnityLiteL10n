@@ -101,7 +101,5 @@ InitTestScene*.unity*
 # Treefy stuff
 .treefy/
 
-# All .meta
-*.meta
-# Except Demo
-!Demo/**/*.meta
+# Internal stuff
+.anx/

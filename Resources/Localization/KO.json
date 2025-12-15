@@ -1,0 +1,8 @@
+{
+    "entries": [
+        { "key": "menu.test", "value": "KO" },
+        { "key": "menu.play", "value": "플레이" },
+        { "key": "menu.settings", "value": "설정" },
+        { "key": "menu.quit", "value": "종료" }
+    ]
+}

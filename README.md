@@ -1,9 +1,9 @@
 # UnityLiteL10n
-A minimal **JSON-Based** localization tool for Unity – Designed for small projects. **[v0.3.0]** This tool currently supports static text only. Variables, plurals, and advanced formatting are not implemented yet.
+A minimal **JSON-Based** localization tool for Unity – Designed for small projects. **[v0.4.0]** This tool currently supports static text only. Variables, plurals, and advanced formatting are not implemented yet.
 
 > This project is made/test under Unity 6.3 (6000.3.1f1)
 
-![Version](https://img.shields.io/badge/version-v0.3.0-blue)
+![Version](https://img.shields.io/badge/version-v0.4.0-blue)
 ![License](https://img.shields.io/github/license/cfrBernard/UnityLiteL10n)
 
 ## Features:
@@ -12,6 +12,7 @@ A minimal **JSON-Based** localization tool for Unity – Designed for small proj
 - Runtime language switching
 - Automatic fallback to a default language
 - TextMeshPro support via `LocalizedText` component
+- Robust loading, audit, and configurable logging
 
 ---
 
@@ -41,10 +42,21 @@ Resources/Localization/
 - `DefaultLanguage` (e.g. `EN`)
 - `CurrentLanguage` (e.g. `EN`)
 
-5. **Optional**: Configure logging and strict mode
+5. **Optional**: Configure debugging settings:
+
+- `missingKeyFormat` (default: "[{0}]") for how missing keys are displayed
+- `DuplicateKeyPolicy` (Overwrite, KeepFirst, Error)
 - `LogLevel` (None, ErrorsOnly, Warnings, Verbose)
 - `strictMode` (enable to throw errors on invalid JSON / missing languages)
-- `missingKeyFormat` (default: "[{0}]") for how missing keys are displayed
+- `PerformFullAudit` (perform post-load audit of all languages against the default language)
+
+---
+
+<p align="center">
+  <img src="Docs/Img\LocManagerComponent_v0.4.0.PNG" alt="LocManager v0.4.0" />
+</p>
+
+> `LocalizationManager` inspector – all debug and validation settings are centralized here.
 
 ---
 
@@ -101,6 +113,21 @@ LocalizationManager.Instance.Reload();
 - Reloads all JSON files from `Resources/Localization/`
 - Triggers update events for all `LocalizedText` components
 
+> This is useful when updating files on the fly.
+
+---
+
+## Debug & Validation
+
+UnityLiteL10n provides optional validation tools to help detect:
+
+- Missing localization keys
+- Invalid or empty JSON files
+- Duplicate keys
+
+> These tools are configurable via the LocalizationManager.
+> **Full debugging features are documented** [here](Docs/DebugFeatures.md)
+
 ---
 
 ## Demo
@@ -117,6 +144,8 @@ It showcases:
 - Multiple localized UI elements
 - JSON-based loading
 
+> **For JA/KO languages**, you will need to assign them as fallbacks in your main (Latin) font.
+
 ---
 
 ## Notes:
@@ -125,6 +154,7 @@ It showcases:
 - Variables, plurals, and advanced formatting are not implemented yet.
 - For more information about the version, please refer to the [changelog](Docs/CHANGELOG.md) section.
 - This project is licensed under the MIT License. See the [LICENSE](LICENSE.md) file for details.
+- For more information on debugging tools, go to the [DebugFeatures](Docs/DebugFeatures.md) file.
 - More details in the [FAQ](Docs/FAQ.md).
 
 ---

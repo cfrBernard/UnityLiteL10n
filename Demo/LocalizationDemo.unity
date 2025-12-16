@@ -1440,8 +1440,10 @@ MonoBehaviour:
   CurrentLanguage: EN
   DefaultLanguage: EN
   missingKeyFormat: '[{0}]'
+  duplicateKeyPolicy: 0
   logLevel: 3
   strictMode: 0
+  performFullAudit: 0
 --- !u!1 &959876954
 GameObject:
   m_ObjectHideFlags: 0
@@ -2649,7 +2651,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: v0.3.0
+  m_text: v0.4.0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

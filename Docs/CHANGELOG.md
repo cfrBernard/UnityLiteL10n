@@ -1,3 +1,30 @@
+## [v0.4.0] – 2025/12/16
+
+### Added
+- Key normalization (Trim) to avoid trailing/leading spaces
+- Duplicate key handling with configurable behavior:
+  - Overwrite existing
+  - Keep first (ignore)
+  - Throw error
+- Optional post-load audit to report:
+  - Missing keys
+  - Fallback usage
+- Colored logs according to log level for better readability in console
+
+### Improved
+- Moved LocalizationData DTO logic into LocalizationManager for better control and logging
+- Updated code presentation:
+  - Regions for logical separation
+  - Tooltips for serializable fields
+- Full documentation (README, FAQ, DebugFeatures)
+
+### Notes
+- No breaking changes to the core localization API
+- Existing keys and behavior remain fully compatible
+- EditorWindow planned for future version
+
+---
+
 ## [v0.3.0] – 2025/12/15
 
 ### Added

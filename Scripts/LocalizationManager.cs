@@ -15,20 +15,6 @@ namespace UnityLiteL10n
     public class LocalizationData
     {
         public LocalizationEntry[] entries;
-
-        public Dictionary<string, string> ToDictionary()
-        {
-            var dict = new Dictionary<string, string>();
-            if (entries == null) return dict;
-
-            foreach (var e in entries)
-            {
-                if (!string.IsNullOrEmpty(e.key))
-                    dict[e.key] = e.value;
-            }
-
-            return dict;
-        }
     }
 
     public enum LocalizationLogLevel
@@ -39,23 +25,46 @@ namespace UnityLiteL10n
         Verbose
     }
 
+    public enum DuplicateKeyPolicy
+    {
+        Overwrite,
+        KeepFirst,
+        Error
+    }
+
     public class LocalizationManager : MonoBehaviour
     {
         public static LocalizationManager Instance { get; private set; }
 
         [Header("Languages")]
+        [Tooltip("Current active language")]
         public string CurrentLanguage = "EN";
+
+        [Tooltip("Fallback language when key is missing")]
         public string DefaultLanguage = "EN";
 
         [Header("Debug")]
+        [Tooltip("Format used when a key is missing")]
         [SerializeField] private string missingKeyFormat = "[{0}]";
+
+        [Tooltip("Policy to handle duplicate keys within the same language file")]
+        [SerializeField] private DuplicateKeyPolicy duplicateKeyPolicy = DuplicateKeyPolicy.Overwrite;
+
+        [Tooltip("Level of logging for localization system")]
         [SerializeField] private LocalizationLogLevel logLevel = LocalizationLogLevel.Warnings;
+
+        [Tooltip("If true, strict mode will throw exceptions on missing/duplicate keys")]
         [SerializeField] private bool strictMode = false;
+
+        [Tooltip("If true, perform post-load audit of all languages against the default language")]
+        [SerializeField] private bool performFullAudit = true;
 
         public event Action OnLanguageChanged;
 
         private readonly Dictionary<string, Dictionary<string, string>> _allTexts = new();
         private readonly HashSet<string> _missingKeys = new();
+
+        #region Unity
 
         private void Awake()
         {
@@ -74,6 +83,10 @@ namespace UnityLiteL10n
             LoadAllLanguages();
         }
 
+        #endregion
+
+        #region Loading
+
         private void LoadAllLanguages()
         {
             _allTexts.Clear();
@@ -85,6 +98,7 @@ namespace UnityLiteL10n
                 LogWarning("No localization files found in Resources/Localization/");
                 if (strictMode)
                     throw new Exception("[UnityLiteL10n] No localization files found.");
+                return;
             }
 
             foreach (var file in files)
@@ -101,7 +115,7 @@ namespace UnityLiteL10n
                     continue;
                 }
 
-                var dict = data.ToDictionary();
+                var dict = BuildDictionary(data, lang);
 
                 if (dict.Count == 0)
                 {
@@ -114,11 +128,50 @@ namespace UnityLiteL10n
                 Log($"Loaded language '{lang}' ({dict.Count} entries)", LocalizationLogLevel.Verbose);
             }
 
+            if (performFullAudit)
+                PerformAudit();
+
             Log($"Loaded {_allTexts.Count} languages total", LocalizationLogLevel.Verbose);
         }
 
-        public string Get(string key)
+        private Dictionary<string, string> BuildDictionary(LocalizationData data, string lang)
         {
+            var dict = new Dictionary<string, string>();
+            int duplicateCount = 0;
+
+            foreach (var entry in data.entries)
+            {
+                string key = NormalizeKey(entry.key);
+
+                if (string.IsNullOrEmpty(key))
+                    continue;
+
+                if (dict.ContainsKey(key))
+                {
+                    duplicateCount++;
+                    HandleDuplicateKey(lang, key, entry.value, dict);
+                    continue;
+                }
+
+                dict.Add(key, entry.value);
+            }
+
+            if (duplicateCount > 0)
+            {
+                Log($"Language '{lang}' contains {duplicateCount} duplicate keys", LocalizationLogLevel.Warnings);
+            }
+
+            return dict;
+        }
+
+        #endregion
+
+        #region Public API
+
+        public string Get(string rawKey)
+        {
+            string key = NormalizeKey(rawKey);
+
             if (string.IsNullOrEmpty(key))
                 return string.Empty;
 
@@ -168,11 +221,78 @@ namespace UnityLiteL10n
             OnLanguageChanged?.Invoke();
         }
 
+        #endregion
+
+        #region Audit
+
+        private void PerformAudit()
+        {
+            if (!_allTexts.ContainsKey(DefaultLanguage))
+            {
+                LogWarning($"Default language '{DefaultLanguage}' not found, skipping audit");
+                return;
+            }
+
+            var referenceKeys = _allTexts[DefaultLanguage].Keys;
+
+            foreach (var (lang, dict) in _allTexts)
+            {
+                if (lang == DefaultLanguage) continue;
+
+                int missingCount = 0;
+
+                foreach (var key in referenceKeys)
+                {
+                    if (!dict.ContainsKey(key))
+                        missingCount++;
+                }
+
+                Log($"Audit '{lang}': {dict.Count} keys, {missingCount} missing compared to default",
+                    LocalizationLogLevel.Verbose);
+            }
+        }
+
+        #endregion
+
+        #region Normalization
+
         private string NormalizeLanguage(string lang)
         {
             return string.IsNullOrEmpty(lang)
                 ? string.Empty
                 : lang.Trim().ToUpperInvariant();
+        }
+
+        private string NormalizeKey(string key)
+        {
+            return string.IsNullOrEmpty(key) ? string.Empty : key.Trim();
+        }
+
+        #endregion
+
+        #region Duplicate & Missing Keys
+
+        private void HandleDuplicateKey(string lang, string key, string value, Dictionary<string, string> dict)
+        {
+            string msg = $"Duplicate key '{key}' in language '{lang}'";
+
+            switch (duplicateKeyPolicy)
+            {
+                case DuplicateKeyPolicy.Overwrite:
+                    dict[key] = value;
+                    LogWarning(msg + " (overwritten)");
+                    break;
+
+                case DuplicateKeyPolicy.KeepFirst:
+                    LogWarning(msg + " (ignored)");
+                    break;
+
+                case DuplicateKeyPolicy.Error:
+                    LogError(msg);
+                    if (strictMode)
+                        throw new Exception(msg);
+                    break;
+            }
         }
 
         private void LogMissingKey(string key, string lang, bool fallback)
@@ -192,22 +312,28 @@ namespace UnityLiteL10n
                 throw new Exception(msg);
         }
 
+        #endregion
+
+        #region Logging
+        
         private void Log(string message, LocalizationLogLevel level)
         {
             if (logLevel < level) return;
-            Debug.Log($"[UnityLiteL10n] {message}");
+            Debug.Log($"<color=cyan>[UnityLiteL10n]</color> {message}");
         }
-
+        
         private void LogWarning(string message)
         {
             if (logLevel < LocalizationLogLevel.Warnings) return;
-            Debug.LogWarning($"[UnityLiteL10n] {message}");
+            Debug.LogWarning($"<color=orange>[UnityLiteL10n]</color> {message}");
         }
-
+        
         private void LogError(string message)
         {
             if (logLevel < LocalizationLogLevel.ErrorsOnly) return;
-            Debug.LogError($"[UnityLiteL10n] {message}");
+            Debug.LogError($"<color=red>[UnityLiteL10n]</color> {message}");
         }
+        
+        #endregion
     }
 }

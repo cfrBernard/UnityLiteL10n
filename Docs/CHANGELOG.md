@@ -1,3 +1,20 @@
+## [v0.5.0] – 2025/12/18
+
+### Added
+- In-demo onboarding panel explaining:
+  - What UnityLiteL10n is
+  - How the demo scene works
+  - How to interact with runtime language switching
+- Fully localized onboarding content (all supported languages)
+- Demo build included for quick testing without opening Unity
+
+### Notes
+- No changes to core localization API
+- This release focuses on usability, onboarding, and presentation
+- Editor tooling and advanced text features planned for future versions
+
+---
+
 ## [v0.4.0] – 2025/12/16
 
 ### Added

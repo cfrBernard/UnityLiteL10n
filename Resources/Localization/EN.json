@@ -1,8 +1,43 @@
 {
     "entries": [
-        { "key": "menu.test", "value": "EN" },
-        { "key": "menu.play", "value": "PLAY" },
-        { "key": "menu.settings", "value": "SETTINGS" },
-        { "key": "menu.quit", "value": "QUIT" }
+        { "key": "Menu.Test", "value": "EN" },
+        { "key": "Menu.Play", "value": "PLAY" },
+        { "key": "Menu.Settings", "value": "SETTINGS" },
+        { "key": "Menu.Quit", "value": "QUIT" },
+
+        { "key": "Onboard.Intro.SectionTitle", "value": "What is this demo?" },
+        { "key": "Onboard.Intro.Description", "value": "This demo showcases UnityLiteL10n, a lightweight and open-source localization tool for Unity. All visible texts in this scene are localized using JSON files and updated at runtime." },
+
+        { "key": "Onboard.TryDemo.SectionTitle", "value": "Try the demo" },
+        { "key": "Onboard.TryDemo.Bullet.FlagInstruction", "value": "• Use the flags to switch languages at runtime" },
+        { "key": "Onboard.TryDemo.Bullet.Observe", "value": "• Observe how all texts update instantly" },
+
+        { "key": "Onboard.Features.SectionTitle", "value": "Highlighted features" },
+        { "key": "Onboard.Features.Bullet.RuntimeSwitch", "value": "• Runtime language switching" },
+        { "key": "Onboard.Features.Bullet.Fallback", "value": "• Automatic fallback handling" },
+        { "key": "Onboard.Features.Bullet.JsonBased", "value": "• JSON-based localization files" },
+        { "key": "Onboard.Features.Bullet.DebugTools", "value": "• Debug & audit tools (optional)" },
+        { "key": "Onboard.Features.Bullet.TMPIntegration", "value": "• TextMeshPro integration" },
+
+        { "key": "Onboard.Why.SectionTitle", "value": "Why UnityLiteL10n?" },
+        { "key": "Onboard.Why.Bullet.Lightweight", "value": "• Lightweight, simple" },
+        { "key": "Onboard.Why.Bullet.SmallProjects", "value": "• For small projects" },
+        { "key": "Onboard.Why.Bullet.RuntimeFriendly", "value": "• Fully runtime-friendly" },
+        { "key": "Onboard.Why.Bullet.TMPIntegration", "value": "• Easy integration with TMP" },
+        
+        { "key": "Onboard.Limitations.SectionTitle", "value": "Limitations" },
+        { "key": "Onboard.Limitations.FeatureMissing.Title", "value": "⚠ No advanced localization features yet" },
+        { "key": "Onboard.Limitations.FeatureMissing.Description", "value": "• Plurals, variables, gender forms, etc. not supported (planned for future updates)" },
+        { "key": "Onboard.Limitations.NoEditor.Title", "value": "⚠ No Editor Window" },
+        { "key": "Onboard.Limitations.NoEditor.Description", "value": "• Everything works at runtime; no custom editor interface yet" },
+        { "key": "Onboard.Limitations.LightweightAlternative.Title", "value": "⚠ Lightweight alternative" },
+        { "key": "Onboard.Limitations.LightweightAlternative.Description", "value": "• Not a replacement for Unity’s full localization system" },
+        { "key": "Onboard.Limitations.LightweightAlternative.Note", "value": "• Meant as a learning / entry point / runtime-friendly solution" },
+        { "key": "Onboard.Limitations.Educational.Title", "value": "⚠ Educational / Demo focus" },
+        { "key": "Onboard.Limitations.Educational.Description", "value": "• This demo illustrates the core mechanics" },
+        { "key": "Onboard.Limitations.Educational.Note", "value": "• Not production-ready for large-scale projects" },
+
+        { "key": "Onboard.Links.GetStarted", "value": "Get Started" },
+        { "key": "Onboard.Links.Documentation", "value": "Documentation & source code" }
     ]
 }

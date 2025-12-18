@@ -1,9 +1,11 @@
 # UnityLiteL10n
-A minimal **JSON-Based** localization tool for Unity – Designed for small projects. **[v0.4.0]** This tool currently supports static text only. Variables, plurals, and advanced formatting are not implemented yet.
+A minimal **JSON-Based** localization tool for Unity – Designed for small projects. **[v0.5.0]** This tool currently supports static text only. Variables, plurals, and advanced formatting are not implemented yet.
 
 > This project is made/test under Unity 6.3 (6000.3.1f1)
 
-![Version](https://img.shields.io/badge/version-v0.4.0-blue)
+[You can easily test it via the latest demo build here](https://github.com/cfrBernard/UnityLiteL10n/releases)
+
+![Version](https://img.shields.io/badge/version-v0.5.0-blue)
 ![License](https://img.shields.io/github/license/cfrBernard/UnityLiteL10n)
 
 ## Features:
@@ -17,7 +19,7 @@ A minimal **JSON-Based** localization tool for Unity – Designed for small proj
 ---
 
 <p align="center">
-  <img src="Docs/Gifs/Unity_5194vnofdK.gif" alt="DemoGIF v0.3.0" />
+  <img src="Docs/Gifs/Unity_TcQdkCAfyJ.gif" alt="DemoGIF v0.5.0" />
 </p>
 
 ---
@@ -130,7 +132,16 @@ UnityLiteL10n provides optional validation tools to help detect:
 
 ---
 
-## Demo
+## Demo (Build)
+
+A demo build is available in: [UnityLiteL10n/releases](https://github.com/cfrBernard/UnityLiteL10n/releases)
+
+> - **For Windows users**.  
+> - No Unity, no setup required. **You can test the tool directly**.
+
+---
+
+## Demo (Editor)
 
 A demo scene is available in:
 
@@ -144,7 +155,7 @@ It showcases:
 - Multiple localized UI elements
 - JSON-based loading
 
-> **For JA/KO languages**, you will need to assign them as fallbacks in your main (Latin) font.
+> **For JA/KO languages**, you will need to assign them as fallbacks in your main (Latin) font. You will find the fonts under `Demo/Fonts/.asset`
 
 ---
 

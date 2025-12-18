@@ -1,8 +1,43 @@
 {
     "entries": [
-        { "key": "menu.test", "value": "FR" },
-        { "key": "menu.play", "value": "JOUER" },
-        { "key": "menu.settings", "value": "OPTIONS" },
-        { "key": "menu.quit", "value": "QUITTER" }
+        { "key": "Menu.Test", "value": "FR" },
+        { "key": "Menu.Play", "value": "JOUER" },
+        { "key": "Menu.Settings", "value": "OPTIONS" },
+        { "key": "Menu.Quit", "value": "QUITTER" },
+
+        { "key": "Onboard.Intro.SectionTitle", "value": "Qu’est-ce que cette démo ?" },
+        { "key": "Onboard.Intro.Description", "value": "Cette démo présente UnityLiteL10n, un outil de localisation léger et open-source pour Unity. Tous les textes visibles dans cette scène sont localisés à l’aide de fichiers JSON et mis à jour au runtime." },
+
+        { "key": "Onboard.TryDemo.SectionTitle", "value": "Essayer la démo" },
+        { "key": "Onboard.TryDemo.Bullet.FlagInstruction", "value": "• Utilisez les drapeaux pour changer de langue au runtime" },
+        { "key": "Onboard.TryDemo.Bullet.Observe", "value": "• Observez comment tous les textes se mettent à jour instantanément" },
+
+        { "key": "Onboard.Features.SectionTitle", "value": "Fonctionnalités" },
+        { "key": "Onboard.Features.Bullet.RuntimeSwitch", "value": "• Changement de langue au runtime" },
+        { "key": "Onboard.Features.Bullet.Fallback", "value": "• Gestion automatique des langues de secours" },
+        { "key": "Onboard.Features.Bullet.JsonBased", "value": "• Fichiers de localisation basés sur JSON" },
+        { "key": "Onboard.Features.Bullet.DebugTools", "value": "• Outils de débogage et d’audit (optionnels)" },
+        { "key": "Onboard.Features.Bullet.TMPIntegration", "value": "• Intégration avec TextMeshPro" },
+
+        { "key": "Onboard.Why.SectionTitle", "value": "Pourquoi UnityLiteL10n ?" },
+        { "key": "Onboard.Why.Bullet.Lightweight", "value": "• Léger et simple" },
+        { "key": "Onboard.Why.Bullet.SmallProjects", "value": "• Adapté aux petits projets" },
+        { "key": "Onboard.Why.Bullet.RuntimeFriendly", "value": "• Entièrement compatible avec l’exécution (runtime)" },
+        { "key": "Onboard.Why.Bullet.TMPIntegration", "value": "• Intégration facile avec TMP" },
+
+        { "key": "Onboard.Limitations.SectionTitle", "value": "Limitations" },
+        { "key": "Onboard.Limitations.FeatureMissing.Title", "value": "⚠ Pas encore de fonctionnalités de localisation avancées" },
+        { "key": "Onboard.Limitations.FeatureMissing.Description", "value": "• Pluriels, variables, genres, etc. non pris en charge (prévus dans de futures mises à jour)" },
+        { "key": "Onboard.Limitations.NoEditor.Title", "value": "⚠ Pas de fenêtre d’éditeur" },
+        { "key": "Onboard.Limitations.NoEditor.Description", "value": "• Tout fonctionne au runtime ; aucune interface d’éditeur personnalisée pour le moment" },
+        { "key": "Onboard.Limitations.LightweightAlternative.Title", "value": "⚠ Alternative légère" },
+        { "key": "Onboard.Limitations.LightweightAlternative.Description", "value": "• Ne remplace pas le système de localisation complet de Unity" },
+        { "key": "Onboard.Limitations.LightweightAlternative.Note", "value": "• Pensé comme une solution d’apprentissage / d’entrée en matière / orientée runtime" },
+        { "key": "Onboard.Limitations.Educational.Title", "value": "⚠ Orientation pédagogique / démo" },
+        { "key": "Onboard.Limitations.Educational.Description", "value": "• Cette démo illustre les mécaniques principales" },
+        { "key": "Onboard.Limitations.Educational.Note", "value": "• Non prêt pour une utilisation en production à grande échelle" },
+
+        { "key": "Onboard.Links.GetStarted", "value": "Premiers pas" },
+        { "key": "Onboard.Links.Documentation", "value": "Documentation et code source" }
     ]
 }

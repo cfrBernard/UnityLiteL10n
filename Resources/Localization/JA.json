@@ -1,8 +1,43 @@
 {
     "entries": [
-        { "key": "menu.test", "value": "JA" },
-        { "key": "menu.play", "value": "プレイ" },
-        { "key": "menu.settings", "value": "設定" },
-        { "key": "menu.quit", "value": "終了" }
+        { "key": "Menu.Test", "value": "JA" },
+        { "key": "Menu.Play", "value": "プレイ" },
+        { "key": "Menu.Settings", "value": "設定" },
+        { "key": "Menu.Quit", "value": "終了" },
+
+        { "key": "Onboard.Intro.SectionTitle", "value": "このデモについて" },
+        { "key": "Onboard.Intro.Description", "value": "このデモは、Unity 向けの軽量かつオープンソースなローカライズツール UnityLiteL10n を紹介します。このシーン内のすべての表示テキストは JSON ファイルを使用してローカライズされ、実行中に更新されます。" },
+
+        { "key": "Onboard.TryDemo.SectionTitle", "value": "デモを試す" },
+        { "key": "Onboard.TryDemo.Bullet.FlagInstruction", "value": "• フラグを使って実行中に言語を切り替えます" },
+        { "key": "Onboard.TryDemo.Bullet.Observe", "value": "• すべてのテキストが即座に更新されることを確認してください" },
+
+        { "key": "Onboard.Features.SectionTitle", "value": "主な機能" },
+        { "key": "Onboard.Features.Bullet.RuntimeSwitch", "value": "• リアルタイムでの言語切り替え" },
+        { "key": "Onboard.Features.Bullet.Fallback", "value": "• 不足している言語の自動処理" },
+        { "key": "Onboard.Features.Bullet.JsonBased", "value": "• JSON ベースのローカライズファイル" },
+        { "key": "Onboard.Features.Bullet.DebugTools", "value": "• デバッグおよび監査ツール（オプション）" },
+        { "key": "Onboard.Features.Bullet.TMPIntegration", "value": "• TextMeshPro との統合" },
+
+        { "key": "Onboard.Why.SectionTitle", "value": "なぜ UnityLiteL10n なのか？" },
+        { "key": "Onboard.Why.Bullet.Lightweight", "value": "• 軽量でシンプル" },
+        { "key": "Onboard.Why.Bullet.SmallProjects", "value": "• 小規模プロジェクト向け" },
+        { "key": "Onboard.Why.Bullet.RuntimeFriendly", "value": "• runtime に完全対応" },
+        { "key": "Onboard.Why.Bullet.TMPIntegration", "value": "• TMP との簡単な統合" },
+
+        { "key": "Onboard.Limitations.SectionTitle", "value": "制限事項" },
+        { "key": "Onboard.Limitations.FeatureMissing.Title", "value": "⚠ 高度なローカライズ機能は未対応" },
+        { "key": "Onboard.Limitations.FeatureMissing.Description", "value": "• 複数形、変数、性別表現などは未対応です（今後対応予定）" },
+        { "key": "Onboard.Limitations.NoEditor.Title", "value": "⚠ Editor ウィンドウなし" },
+        { "key": "Onboard.Limitations.NoEditor.Description", "value": "• すべて runtime で動作します。専用の Editor UI はまだありません" },
+        { "key": "Onboard.Limitations.LightweightAlternative.Title", "value": "⚠ 軽量な代替手段" },
+        { "key": "Onboard.Limitations.LightweightAlternative.Description", "value": "• Unity の公式ローカライズシステムの完全な代替ではありません" },
+        { "key": "Onboard.Limitations.LightweightAlternative.Note", "value": "• 学習用途／入門用／runtime フレンドリーなソリューションとして設計されています" },
+        { "key": "Onboard.Limitations.Educational.Title", "value": "⚠ 教育目的／デモ向け" },
+        { "key": "Onboard.Limitations.Educational.Description", "value": "• このデモは基本的な仕組みを示しています" },
+        { "key": "Onboard.Limitations.Educational.Note", "value": "• 大規模プロジェクト向けの本番用途には未対応です" },
+
+        { "key": "Onboard.Links.GetStarted", "value": "開始する" },
+        { "key": "Onboard.Links.Documentation", "value": "ドキュメントとソースコード" }
     ]
 }

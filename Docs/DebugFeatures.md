@@ -1,6 +1,6 @@
 # Debug & Visualization Features
 
-This document describes all debugging, logging, and validation features available in **UnityLiteL10n** as of **v0.4.0**, based solely on the runtime behavior of `LocalizationManager`.
+This document describes all debugging, logging, and validation features available in **UnityLiteL10n** as of **v0.6.0**, based solely on the runtime behavior of `LocalizationManager`.
 
 The goal of these features is to help you:
 
@@ -259,7 +259,7 @@ This is ideal for:
 Log Level: Verbose
 Strict Mode: false
 Duplicate Policy: Overwrite
-Full Audit: false
+Full Audit: true
 ```
 
 Good balance between visibility and iteration speed.

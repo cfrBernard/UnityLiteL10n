@@ -1,3 +1,24 @@
+## [v0.6.0] – 2025/12/28
+
+### Added
+- Extracted pure data models (LocalizationData, LocalizationEntry)
+- LocalizationStore to centralize loaded languages, keys, and missing key tracking
+- LocalizationLoader as a dedicated service for loading and parsing localization files
+- LocalizationLogger to decouple logging logic from runtime and editor usage
+
+### Improved
+- Refactored LocalizationManager into a lightweight orchestrator
+- Preserved full inspector compatibility while reducing internal responsibilities
+- Improved separation of concerns for better maintainability and testability
+- Prepared internal architecture for upcoming Editor Window
+
+### Notes
+- No breaking changes to the public localization API
+- No changes required for existing localization JSON files
+- This release focuses on internal architecture
+
+---
+
 ## [v0.5.0] – 2025/12/18
 
 ### Added

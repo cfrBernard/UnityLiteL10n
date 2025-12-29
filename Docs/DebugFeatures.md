@@ -197,17 +197,29 @@ When enabled, UnityLiteL10n compares **all languages** against the **default lan
 
 ### Audit Rules
 
-* The default language is treated as the reference
-* Other languages are checked for missing keys
-* Results are logged in **Verbose** mode only
+- The audit always runs when enabled, **independently of the log level**
+- The default language is used as the reference set of keys
+- Each other language is checked for:
+    - Missing keys compared to the reference
+- Results are generated as structured audit data, not just logs
 
-Example output:
+### Example output
+
+For now, audit results are written directly to the Unity console:
 
 ```
-Audit 'FR': 120 keys, 5 missing compared to default
+[UnityLiteL10n][Audit] Reference language: EN (120 keys)
+[UnityLiteL10n][Audit] FR: 5 missing keys
+[UnityLiteL10n][Audit] ES: OK (120 keys)
 ```
 
-> This helps identify incomplete translations early.
+### Why This Matters
+
+- Detect incomplete translations early
+- Ensure localization coverage across all languages
+
+> Note: The audit system is designed as a data-first feature.  
+> Logging is only one possible consumer of the audit results.
 
 ---
 

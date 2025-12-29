@@ -5,6 +5,7 @@ namespace UnityLiteL10n
     
     using UnityLiteL10n.Core;
     using UnityLiteL10n.Logging;
+    using UnityLiteL10n.Audit;
 
     public enum LocalizationLogLevel
     {
@@ -24,6 +25,7 @@ namespace UnityLiteL10n
     public class LocalizationManager : MonoBehaviour
     {
         public static LocalizationManager Instance { get; private set; }
+        public LocalizationAuditResult LastAudit { get; private set; }
 
         [Header("Languages")]
         [Tooltip("Current active language")]
@@ -54,6 +56,7 @@ namespace UnityLiteL10n
         private LocalizationStore _store;
         private LocalizationLoader _loader;
         private LocalizationLogger _logger;
+        private LocalizationAuditor _auditor;
 
         #region Unity
 
@@ -74,6 +77,7 @@ namespace UnityLiteL10n
             _store = new LocalizationStore();
             _loader = new LocalizationLoader();
             _logger = new LocalizationLogger(logLevel);
+            _auditor = new LocalizationAuditor();
 
             Reload();
         }
@@ -141,7 +145,10 @@ namespace UnityLiteL10n
             _store.SetAll(data);
 
             if (performFullAudit)
-                PerformAudit();
+            {
+                LastAudit = _auditor.Run(_store, DefaultLanguage);
+                LogAuditToConsole(LastAudit);
+            }
 
             OnLanguageChanged?.Invoke();
         }
@@ -150,31 +157,25 @@ namespace UnityLiteL10n
 
         #region Audit
 
-        private void PerformAudit()
+        private void LogAuditToConsole(LocalizationAuditResult audit)
         {
-            if (!_store.HasLanguage(DefaultLanguage))
-            {
-                _logger.Warning($"Default language '{DefaultLanguage}' not found, skipping audit");
+            if (audit == null || audit.Languages.Count == 0)
                 return;
-            }
 
-            var referenceKeys = _store.AllTexts[DefaultLanguage].Keys;
+            Debug.Log($"<color=cyan>[UnityLiteL10n][Audit]</color> Reference language: {audit.ReferenceLanguage} ({audit.ReferenceKeyCount} keys)");
 
-            foreach (var (lang, dict) in _store.AllTexts)
+            foreach (var lang in audit.Languages.Values)
             {
-                if (lang == DefaultLanguage) continue;
-
-                int missingCount = 0;
-                foreach (var key in referenceKeys)
+                if (lang.MissingKeys.Count == 0)
                 {
-                    if (!dict.ContainsKey(key))
-                        missingCount++;
+                    Debug.Log($"<color=cyan>[UnityLiteL10n][Audit]</color> {lang.Language}: OK ({lang.KeyCount} keys)");
                 }
-
-                _logger.Log(
-                    $"Audit '{lang}': {dict.Count} keys, {missingCount} missing compared to default",
-                    LocalizationLogLevel.Verbose
-                );
+                else
+                {
+                    Debug.LogWarning(
+                        $"<color=orange>[UnityLiteL10n][Audit]</color> {lang.Language}: {lang.MissingKeys.Count} missing keys"
+                    );
+                }
             }
         }
 

@@ -1,3 +1,24 @@
+## [v0.7.0] – 2025/12/30
+
+### Added
+- Dedicated LocalizationAuditor service to perform full language audits
+- Structured audit result model (LocalizationAuditResult, LanguageAudit)
+- Persistent access to the latest audit result via LocalizationManager
+- Audit execution decoupled from log level configuration
+
+### Improved
+- Full language audit now always runs when enabled, regardless of log level
+- Audit logic fully separated from logging and manager responsibilities
+- Audit results prepared for future editor visualization and export
+- Cleaner internal data flow for upcoming advanced audit features
+
+### Notes
+- Audit output is currently logged directly to the Unity console
+- Audit data is now a first-class system output, not just debug logs
+- This release focuses on audit architecture, not audit depth
+
+---
+
 ## [v0.6.0] – 2025/12/28
 
 ### Added

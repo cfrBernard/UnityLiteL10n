@@ -166,14 +166,22 @@ namespace UnityLiteL10n
 
             foreach (var lang in audit.Languages.Values)
             {
-                if (lang.MissingKeys.Count == 0)
+                var coverage = (lang.Coverage * 100f).ToString("0.0");
+
+                if (!lang.HasIssues)
                 {
-                    Debug.Log($"<color=cyan>[UnityLiteL10n][Audit]</color> {lang.Language}: OK ({lang.KeyCount} keys)");
+                    Debug.Log(
+                        $"<color=cyan>[UnityLiteL10n][Audit]</color> {lang.Language}: OK ({coverage}% coverage)"
+                    );
                 }
                 else
                 {
                     Debug.LogWarning(
-                        $"<color=orange>[UnityLiteL10n][Audit]</color> {lang.Language}: {lang.MissingKeys.Count} missing keys"
+                        $"<color=orange>[UnityLiteL10n][Audit]</color> {lang.Language}: " +
+                        $"{coverage}% coverage, " +
+                        $"{lang.MissingKeys.Count} missing, " +
+                        $"{lang.EmptyValues.Count} empty, " +
+                        $"{lang.ExtraKeys.Count} extra"
                     );
                 }
             }

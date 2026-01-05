@@ -14,7 +14,7 @@ The goal of these features is to help you:
 <br>
 
 <p align="center">
-  <img src="Img\LocManagerComponent_v0.4.0.PNG" alt="DemoGIF v0.3.0" />
+  <img src="Img\LocManagerComponent_v0.4.0.PNG" alt="LocManager v0.4.0" />
 </p>
 
 > LocalizationManager inspector – all debug and validation settings are centralized here.
@@ -201,17 +201,27 @@ When enabled, UnityLiteL10n compares **all languages** against the **default lan
 - The default language is used as the reference set of keys
 - Each other language is checked for:
     - Missing keys compared to the reference
+    - Empty keys compared to the reference
+    - Extra keys compared to the reference
 - Results are generated as structured audit data, not just logs
 
 ### Example output
 
-For now, audit results are written directly to the Unity console:
+Audit results are written directly to the Unity console:
 
 ```
-[UnityLiteL10n][Audit] Reference language: EN (120 keys)
-[UnityLiteL10n][Audit] FR: 5 missing keys
-[UnityLiteL10n][Audit] ES: OK (120 keys)
+[UnityLiteL10n][Audit] Reference language: EN (33 keys)
+[UnityLiteL10n][Audit] FR: 97,0% coverage, 1 missing, 1 empty, 1 extra
+[UnityLiteL10n][Audit] ES: OK (100,0% coverage)
 ```
+
+---
+
+<p align="center">
+  <img src="Img\AuditLogOutput_v0.7.0_refactorBranch_audit-extension_v1.PNG" alt="Audit Log Output" />
+</p>
+
+---
 
 ### Why This Matters
 

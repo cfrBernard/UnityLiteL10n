@@ -6,7 +6,9 @@
         { "key": "Menu.Quit", "value": "QUITTER" },
 
         { "key": "Onboard.Intro.SectionTitle", "value": "Qu’est-ce que cette démo ?" },
-        { "key": "Onboard.Intro.Description", "value": "Cette démo présente UnityLiteL10n, un outil de localisation léger et open-source pour Unity. Tous les textes visibles dans cette scène sont localisés à l’aide de fichiers JSON et mis à jour au runtime." },
+        { "key": "Onboard.Intro.SectionTESTEXTRA", "value": "Qu’est-ce que cette démo ?" },
+        { "key": "Onboard.Intro.SectionTESTEXTRA2", "value": "" },
+        { "key": "Onboard.Intro.Description", "value": "" },
 
         { "key": "Onboard.TryDemo.SectionTitle", "value": "Essayer la démo" },
         { "key": "Onboard.TryDemo.Bullet.FlagInstruction", "value": "• Utilisez les drapeaux pour changer de langue au runtime" },

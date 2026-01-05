@@ -1,11 +1,11 @@
 # UnityLiteL10n
-A minimal **JSON-Based** localization tool for Unity – Designed for small projects. **[v0.7.0]** This tool currently supports static text only. Variables, plurals, and advanced formatting are not implemented yet.
+A minimal **JSON-Based** localization tool for Unity – Designed for small projects. **[v0.8.0]** This tool currently supports static text only. Variables, plurals, and advanced formatting are not implemented yet.
 
 > This project is made/test under Unity 6.3 (6000.3.1f1)
 
 [You can easily test it via the latest demo build here](https://github.com/cfrBernard/UnityLiteL10n/releases)
 
-![Version](https://img.shields.io/badge/version-v0.7.0-blue)
+![Version](https://img.shields.io/badge/version-v0.8.0-blue)
 ![License](https://img.shields.io/github/license/cfrBernard/UnityLiteL10n)
 
 ## Features:
@@ -126,6 +126,8 @@ UnityLiteL10n provides optional validation tools to help detect:
 - Missing localization keys
 - Invalid or empty JSON files
 - Duplicate keys
+- Empty keys
+- Extra keys
 
 > These tools are configurable via the LocalizationManager.
 > **Full debugging features are documented** [here](Docs/DebugFeatures.md)

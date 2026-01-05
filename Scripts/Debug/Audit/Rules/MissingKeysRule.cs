@@ -1,20 +1,15 @@
-namespace UnityLiteL10n.Audit
+namespace UnityLiteL10n.Audit.Rules
 {
     using UnityLiteL10n.Core;
 
-    public class LocalizationAuditor
+    public class MissingKeysRule : ILocalizationAuditRule
     {
-        public LocalizationAuditResult Run(LocalizationStore store, string referenceLanguage)
+        public void Evaluate(LocalizationStore store, string referenceLanguage, LocalizationAuditResult result)
         {
-            var result = new LocalizationAuditResult
-            {
-                ReferenceLanguage = referenceLanguage
-            };
-
             if (!store.HasLanguage(referenceLanguage))
-                return result;
+                return;
 
-            var referenceKeys = store.AllTexts[referenceLanguage].Keys;
+            var referenceKeys = store.AllTexts[referenceLanguage];
             result.ReferenceKeyCount = referenceKeys.Count;
 
             foreach (var (lang, dict) in store.AllTexts)
@@ -25,19 +20,23 @@ namespace UnityLiteL10n.Audit
                 var audit = new LanguageAudit
                 {
                     Language = lang,
-                    KeyCount = dict.Count
+                    KeyCount = dict.Count,
+                    ReferenceKeyCount = referenceKeys.Count
                 };
 
-                foreach (var key in referenceKeys)
+                foreach (var key in referenceKeys.Keys)
                 {
                     if (!dict.ContainsKey(key))
                         audit.MissingKeys.Add(key);
                 }
 
+                audit.Coverage =
+                    referenceKeys.Count == 0
+                        ? 1f
+                        : 1f - (float)audit.MissingKeys.Count / referenceKeys.Count;
+
                 result.Languages[lang] = audit;
             }
-
-            return result;
         }
     }
 }

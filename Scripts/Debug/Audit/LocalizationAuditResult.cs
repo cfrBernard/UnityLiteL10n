@@ -11,13 +11,6 @@ namespace UnityLiteL10n.Audit
         public Dictionary<string, LanguageAudit> Languages = new();
 
         public bool HasIssues =>
-            Languages.Values.Any(l => l.MissingKeys.Count > 0);
-    }
-
-    public class LanguageAudit
-    {
-        public string Language;
-        public int KeyCount;
-        public List<string> MissingKeys = new();
+            Languages.Values.Any(l => l.HasIssues);
     }
 }

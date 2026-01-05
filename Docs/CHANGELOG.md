@@ -1,3 +1,21 @@
+## [v0.8.0] – 2026/01/05
+
+### Added
+- Introduce rule-based audit and extend localization checks
+- Add new audit metrics including **coverage percentage**, **empty values** detection, and **extra keys** detection across languages
+
+### Improved
+- Refactor localization audit system to use extensible **rule-based** architecture.
+
+### Notes
+- Audit output is logged directly to the Unity console
+- Editor tooling planned for future versions
+- This version focuses on audit architecture
+
+> From `refactor/audit-extension` branch
+
+---
+
 ## [v0.7.0] – 2025/12/30
 
 ### Added

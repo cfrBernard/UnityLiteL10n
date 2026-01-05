@@ -94,7 +94,7 @@ Duplicate keys within the same language file are handled according to `Duplicate
 
 ### What does the full audit do?
 
-When `performFullAudit` is enabled, all languages are checked against the default language after loading. The audit reports how many keys are missing per language, helping ensure translation completeness.
+When `performFullAudit` is enabled, all languages are checked against the default language after loading. The audit reports how many **missing** / **empty** / **extra** keys are per language, helping ensure translation completeness.
 
 ### Can I control logging verbosity?
 
